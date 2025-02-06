@@ -1,0 +1,32 @@
+.task-item{
+    list-style: none; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 50%;
+}
+
+.task-input {
+    display: flex;
+    gap: 1rem;
+    align-items: center;  
+}
+
+.delete-btn {
+    background-color: rgb(206, 17, 17);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.delete-btn:hover {
+    background-color: brown;
+    cursor: pointer;
+}
