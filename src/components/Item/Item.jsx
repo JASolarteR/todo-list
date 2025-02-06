@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useTasks } from "../../hooks/useTasks";
+import { Tag } from "../Tag/Tag";
 import "./style.css";
 
 export const TaskItem = ({ id, completed, content, priority, date }) => {
@@ -20,11 +21,12 @@ export const TaskItem = ({ id, completed, content, priority, date }) => {
           }}
         />
         <div className={completed ? "completed" : null}>
-          <h4>
-            {content} <span className={`priority ${priority}`}>{priority}</span>
+          <h4 style={{display: "flex", gap: "1rem"}}>
+            {content}
           </h4>
-          <p>Due to: {date}</p>
+          <p style={{fontWeight: "lighter"}}>{date}</p>
         </div>
+        <Tag tag={priority}/>
       </div>
       <button onClick={() => deleteTask(id)} className="delete-btn">
         Delete
