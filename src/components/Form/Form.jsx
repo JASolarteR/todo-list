@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import { priorityOptions } from "../../constants/priorityOptions";
 import { useForm } from "../../hooks/useForm";
 import "./style.css";
 
-export const TaskForm = ({ addTask }) => {
-  const { handleForm, handleInput, query } = useForm(addTask);
+export const TaskForm = () => {
+  const { handleForm, handleInput, query } = useForm();
   const currentDate = new Date().toJSON().slice(0, 10);
   
   return (

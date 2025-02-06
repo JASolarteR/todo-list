@@ -8,6 +8,7 @@ export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState(localStorageTodos);
   const [filter, setFilter] = useState("all");
   const [priorityFilter, setPriorityFilter] = useState("all");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(tasks));
@@ -43,12 +44,12 @@ export const TaskContextProvider = ({ children }) => {
     if (e.target.name === "filter-status") {
       setFilter(e.target.value);
     }
-    setPriorityFilter(e.target.value)
+    setPriorityFilter(e.target.value);
   };
 
   const handleFilteredTasks = () => {
-    let filteredTasks = tasks;
-  
+    let filteredTasks = tasks.filter(({content}) => content.toLowerCase().includes(query.toLowerCase()));
+
     switch (filter) {
       case "completed":
         filteredTasks = filteredTasks.filter(({ completed }) => completed);
@@ -57,24 +58,33 @@ export const TaskContextProvider = ({ children }) => {
         filteredTasks = filteredTasks.filter(({ completed }) => !completed);
         break;
     }
-  
+
     switch (priorityFilter) {
       case "low":
-        filteredTasks = filteredTasks.filter(({ priority }) => priority === "low");
+        filteredTasks = filteredTasks.filter(
+          ({ priority }) => priority === "low"
+        );
         break;
       case "mid":
-        filteredTasks = filteredTasks.filter(({ priority }) => priority === "mid");
+        filteredTasks = filteredTasks.filter(
+          ({ priority }) => priority === "mid"
+        );
         break;
       case "high":
-        filteredTasks = filteredTasks.filter(({ priority }) => priority === "high");
+        filteredTasks = filteredTasks.filter(
+          ({ priority }) => priority === "high"
+        );
         break;
     }
-  
+
     return filteredTasks;
   };
-  
-  const filteredTasks = handleFilteredTasks();
 
+  const handleQuery = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const filteredTasks = handleFilteredTasks();
 
   return (
     <TaskContext.Provider
@@ -86,6 +96,8 @@ export const TaskContextProvider = ({ children }) => {
         deleteTask,
         toggleCompleted,
         filteredTasks,
+        handleQuery,
+        query,
       }}
     >
       {children}

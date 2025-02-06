@@ -4,6 +4,8 @@ body{
     background-color: black;
     color: whitesmoke;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    margin-top: 1rem;
 }
 
 #root{
@@ -11,6 +13,16 @@ body{
     flex-direction: column;
     align-items: center;
     width: 100dvw;
+}
+
+.toggle-form{
+    margin: 1rem;
+    width: 20%;
+    background-color: aliceblue;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 
