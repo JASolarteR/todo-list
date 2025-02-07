@@ -30,7 +30,7 @@ export const TaskList = () => {
       state: [filteredTasks, setTasks],
       config,
     });
-  }, []);
+  }, [filteredTasks]);
 
   return (
     <ul className="task-list" ref={parentRef}>
