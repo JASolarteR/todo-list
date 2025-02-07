@@ -14,7 +14,6 @@ body{
     flex-direction: column;
     align-items: center;
     width: 100dvw;
-    height: 90dvh;
 }
 
 .toggle-form{
@@ -27,7 +26,7 @@ body{
     border-radius: 1rem;
     cursor: pointer;
     position: absolute;
-    bottom: 0;
+    bottom: 2rem;
     right: 2rem;
 }
 

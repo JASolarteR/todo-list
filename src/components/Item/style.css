@@ -1,36 +1,50 @@
-.task-item{
-    list-style: none; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 1rem;
-    color: black;
+.task-item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: black;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.task-item:hover {
+  cursor: grab;
+}
+
+.task-item:active {
+  cursor: grabbing;
+  opacity: 20%;
+  transform: rotate(0.5deg);
+
 }
 
 .completed {
-    text-decoration: line-through;
-    opacity: 50%;
+  text-decoration: line-through;
+  opacity: 50%;
 }
 
 .task-input {
-    display: flex;
-    gap: 1rem;
-    align-items: center;  
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .delete-btn {
-    background-color: rgb(206, 17, 17);
-    color: white;
-    padding: 0.4rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
+  background-color: rgb(206, 17, 17);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
 }
 
 .delete-btn:hover {
-    background-color: brown;
-    cursor: pointer;
+  background-color: brown;
+  cursor: pointer;
 }

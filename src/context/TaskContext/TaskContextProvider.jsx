@@ -85,6 +85,7 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const filteredTasks = handleFilteredTasks();
+  
 
   return (
     <TaskContext.Provider
@@ -98,6 +99,7 @@ export const TaskContextProvider = ({ children }) => {
         filteredTasks,
         handleQuery,
         query,
+        setTasks
       }}
     >
       {children}

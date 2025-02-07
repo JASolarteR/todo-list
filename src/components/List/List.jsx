@@ -1,9 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { dragAndDrop } from "@formkit/drag-and-drop/react";
 import { useTasks } from "../../hooks/useTasks";
 import { TaskItem } from "../Item/Item";
-import "./style.css"
+import "./style.css";
+import { useEffect, useRef } from "react";
 
 export const TaskList = () => {
-  const { filteredTasks, filter } = useTasks();
+  const { filteredTasks, filter, setTasks } = useTasks();
+  const parentRef = useRef(null);
 
   const emptyStateMessage = () => {
     switch (filter) {
@@ -17,10 +21,22 @@ export const TaskList = () => {
         return "Add new tasks to your day";
     }
   };
+
+  const config = { sortable: true };
+
+  useEffect(() => {
+    dragAndDrop({
+      parent: parentRef.current,
+      state: [filteredTasks, setTasks],
+      config,
+    });
+  }, []);
+
   return (
-    <ul className="task-list">
+    <ul className="task-list" ref={parentRef}>
       {filteredTasks.length > 0 ? (
-        filteredTasks.map(({ id, content, completed, priority, date }) => {
+        filteredTasks.map((task) => {
+          const { id, content, completed, priority, date } = task;
           return (
             <TaskItem
               key={id}
