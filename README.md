@@ -64,7 +64,7 @@ Create a simple Todo List application using React.js that allows users to manage
 - **Search Functionality:** Add a search bar to filter tasks based on content. ✅
 - **User Authentication:** Implement user authentication to allow users to create accounts and save their tasks using services like Firebase or Auth0.
 - **Dark Mode/Light Mode:** Allow users to toggle between dark mode and light mode for better accessibility.
-- **Drag and Drop Functionality:** Implement drag-and-drop to reorder tasks.
+- **Drag and Drop Functionality:** Implement drag-and-drop to reorder tasks. ✅
 - **Task Completion Statistics:** Show statistics like the number of completed tasks, pending tasks, and completion rate. ✅
 
 ## Final Output
