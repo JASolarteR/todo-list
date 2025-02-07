@@ -30,42 +30,42 @@ Create a simple Todo List application using React.js that allows users to manage
 
 ## Components
 
-### 1. Todo Component
+### 1. Todo Component ✅
 
 - Displays a single todo item with its title and a button to remove it.
 - **Expected Output:** A component that shows the title of a todo and a button labeled "Remove".
 
-### 2. TodoList Component
+### 2. TodoList Component ✅
 
 - Renders a list of `Todo` components.
 - **Expected Output:** A list of todo items displayed on the screen (initially empty).
 
-### 3. Input Field for New Todos
+### 3. Input Field for New Todos ✅
 
 - Implemented an input field and a button to add new todos.
 - **Expected Output:** An input field and a button labeled "Add Todo". When a user types a todo title and clicks "Add Todo", the title is displayed in the list.
 
-## State Management
+## State Management ✅
 
 - Utilizes React's state management to handle the list of todos.
 - **Expected Output:** The application maintains a list of todos in the component's state, allowing users to add items to the list.
 
 ## Bonus Task
 
-### Filter Completed and Incomplete Todos
+### Filter Completed and Incomplete Todos ✅
 
 - Added functionality to filter the displayed todos to show only completed, only incomplete, or all todos.
 - **Expected Output:** A set of buttons to filter todos, and the list updates accordingly based on the selected filter.
 
 ## Enhancements
 
-- **Due Dates and Priorities:** Allow users to set due dates and assign priority levels (e.g., Low, Medium, High).
+- **Due Dates and Priorities:** Allow users to set due dates and assign priority levels (e.g., Low, Medium, High). ✅
 - **Task Categories/Tags:** Enable users to categorize tasks and filter by tags.
-- **Search Functionality:** Add a search bar to filter tasks based on content.
+- **Search Functionality:** Add a search bar to filter tasks based on content. ✅
 - **User Authentication:** Implement user authentication to allow users to create accounts and save their tasks using services like Firebase or Auth0.
 - **Dark Mode/Light Mode:** Allow users to toggle between dark mode and light mode for better accessibility.
 - **Drag and Drop Functionality:** Implement drag-and-drop to reorder tasks.
-- **Task Completion Statistics:** Show statistics like the number of completed tasks, pending tasks, and completion rate.
+- **Task Completion Statistics:** Show statistics like the number of completed tasks, pending tasks, and completion rate. ✅
 
 ## Final Output
 
