@@ -5,7 +5,7 @@ export const Stats = () => {
 
   const completedTasks = tasks.filter(({ completed }) => completed).length;
   const pendingTasks = tasks.filter(({ completed }) => !completed).length
-  const completionRate = 1 / (tasks.length / completedTasks) * 100
+  const completionRate = 1 / (tasks.length / completedTasks) * 100 || 0
 
   return (
     <section className="stats-section">
