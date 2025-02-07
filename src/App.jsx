@@ -5,6 +5,7 @@ import { TaskForm } from "./components/Form/Form";
 import { TaskList } from "./components/List/List";
 import { useTasks } from "./hooks/useTasks";
 import { SearchBar } from "./components/SearchBar/SearchBar";
+import { Stats } from "./components/Stats/Stats";
 
 function App() {
   const { handleFilterTasks } = useTasks();
@@ -21,8 +22,10 @@ function App() {
         Add new task
       </button>
 
+      <Stats />
+
       {toggleForm ? (
-        <TaskForm toggleForm={handleToggleForm}/>
+        <TaskForm toggleForm={handleToggleForm} />
       ) : (
         <>
           <SearchBar />
