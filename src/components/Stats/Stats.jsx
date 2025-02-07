@@ -13,7 +13,7 @@ export const Stats = () => {
       <div className="stats-list">
         <p>Completed tasks: {completedTasks}</p>
         <p>Pending tasks: {pendingTasks}</p>
-        <p>Completion rate: %{completionRate.toPrecision(3)}</p>
+        <p>Completion rate: {completionRate.toPrecision(3)}%</p>
       </div>
     </section>
   );
