@@ -1,11 +1,30 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TaskContext } from "./TaskContext";
 
-const localStorageTodos = JSON.parse(localStorage.getItem("todos")) || [];
+type TaskContextProviderProps = {
+  children: React.ReactNode
+}
 
-export const TaskContextProvider = ({ children }) => {
-  const [tasks, setTasks] = useState(localStorageTodos);
+export type TaskProps = {
+    id: string
+    content: string
+    completed: boolean
+    date: string
+    priority: string
+}
+
+export type AddTaskProps = {
+  content:string
+  date: string
+  priority: string
+}
+
+export const TaskContextProvider = ({ children }:TaskContextProviderProps) => {
+  const [tasks, setTasks] = useState<TaskProps[]>(()=>{
+    const localTodos = localStorage.getItem("todos")
+    return localTodos ? JSON.parse(localTodos) : []
+  });
   const [filter, setFilter] = useState("all");
   const [priorityFilter, setPriorityFilter] = useState("all");
   const [query, setQuery] = useState("");
@@ -14,7 +33,7 @@ export const TaskContextProvider = ({ children }) => {
     localStorage.setItem("todos", JSON.stringify(tasks));
   }, [tasks]);
 
-  const addTask = ({ content, date, priority }) => {
+  const addTask = ({ content, date, priority }:AddTaskProps) => {
     const newTask = {
       id: crypto.randomUUID(),
       content,
@@ -25,12 +44,12 @@ export const TaskContextProvider = ({ children }) => {
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
-  const deleteTask = (taskId) => {
+  const deleteTask = (taskId: string) => {
     const filteredTasks = tasks.filter(({ id }) => id !== taskId);
     setTasks(filteredTasks);
   };
 
-  const toggleCompleted = (taskId, state) => {
+  const toggleCompleted = (taskId: string, state:boolean) => {
     const updatedList = tasks.map((task) => {
       if (taskId === task.id) {
         return { ...task, completed: state };
@@ -40,7 +59,7 @@ export const TaskContextProvider = ({ children }) => {
     setTasks(updatedList);
   };
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (e.target.name === "filter-status") {
       setFilter(e.target.value);
     }
@@ -80,7 +99,7 @@ export const TaskContextProvider = ({ children }) => {
     return filteredTasks;
   };
 
-  const handleQuery = (e) => {
+  const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 

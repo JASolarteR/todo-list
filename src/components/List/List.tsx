@@ -4,10 +4,12 @@ import { useTasks } from "../../hooks/useTasks";
 import { TaskItem } from "../Item/Item";
 import "./style.css";
 import { useEffect, useRef } from "react";
+import React from "react";
+
 
 export const TaskList = () => {
   const { filteredTasks, filter, setTasks } = useTasks();
-  const parentRef = useRef(null);
+  const parentRef = useRef<HTMLUListElement>(null!);
 
   const emptyStateMessage = () => {
     switch (filter) {
@@ -22,20 +24,17 @@ export const TaskList = () => {
     }
   };
 
-  const config = { sortable: true };
-
   useEffect(() => {
     dragAndDrop({
       parent: parentRef.current,
       state: [filteredTasks, setTasks],
-      config,
     });
   }, [filteredTasks]);
 
   return (
     <ul className="task-list" ref={parentRef}>
       {filteredTasks.length > 0 ? (
-        filteredTasks.map((task) => {
+        filteredTasks.map((task: { id: string; content: string; completed: boolean; priority: string; date: string; }) => {
           const { id, content, completed, priority, date } = task;
           return (
             <TaskItem

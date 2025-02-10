@@ -1,4 +1,9 @@
-export const filterOptions = [
+type FilterOptions = {
+    value: string
+    label: string
+}[]
+
+export const filterOptions: FilterOptions = [
     {
         value: "all",
         label: "All"

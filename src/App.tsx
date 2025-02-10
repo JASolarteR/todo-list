@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import { FilterSection } from "./components/Filter/FilterSection";
 import { TaskForm } from "./components/Form/Form";

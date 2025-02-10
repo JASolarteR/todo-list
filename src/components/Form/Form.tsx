@@ -2,6 +2,13 @@ import { useState } from "react";
 import { priorityOptions } from "../../constants/priorityOptions";
 import { useForm } from "../../hooks/useForm";
 import "./style.css";
+import React from "react";
+
+type PriorityOptionsType = {
+  id: string
+  value: string
+  label: string
+}
 
 export const TaskForm = () => {
   const [toggleForm, setToggleForm] = useState(false);
@@ -10,7 +17,7 @@ export const TaskForm = () => {
     setToggleForm((prevState) => !prevState);
   };
 
-  const { handleForm, handleInput, query } = useForm();
+  const { handleForm, handleInput, taskData } = useForm();
   const currentDate = new Date().toJSON().slice(0, 10);
 
   if (!toggleForm) {
@@ -29,7 +36,7 @@ export const TaskForm = () => {
           type="text"
           placeholder="Add todo"
           onChange={handleInput}
-          value={query}
+          value={taskData.content}
           name="content"
           id="task-content"
           className="input-style"
@@ -51,10 +58,10 @@ export const TaskForm = () => {
           onChange={handleInput}
           required
         >
-          <option value="" defaultValue defaultChecked>
+          <option value="" defaultChecked>
             Task priority
           </option>
-          {priorityOptions.map(({ id, value, label }) => {
+          {priorityOptions.map(({ id, value, label }:PriorityOptionsType) => {
             return (
               <option key={id} value={value}>
                 {label}

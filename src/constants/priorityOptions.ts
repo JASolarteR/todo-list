@@ -1,4 +1,10 @@
-export const priorityOptions = [
+type PriorityOptions = {
+    id: string
+    value: string
+    label: string
+}[]
+
+export const priorityOptions: PriorityOptions = [
     {
         id: crypto.randomUUID(),
         value: "low",

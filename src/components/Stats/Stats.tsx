@@ -1,10 +1,11 @@
+import React from "react";
 import { useTasks } from "../../hooks/useTasks";
 
 export const Stats = () => {
   const { tasks } = useTasks();
 
-  const completedTasks = tasks.filter(({ completed }) => completed).length;
-  const pendingTasks = tasks.filter(({ completed }) => !completed).length
+  const completedTasks = tasks.filter(({ completed }:{completed:boolean}) => completed).length;
+  const pendingTasks = tasks.filter(({ completed }:{completed:boolean}) => !completed).length
   const completionRate = 1 / (tasks.length / completedTasks) * 100 || 0
 
   return (

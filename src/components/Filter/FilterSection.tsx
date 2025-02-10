@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import React from "react";
 import { filterOptions } from "../../constants/filterOptions";
 import { priorityOptions } from "../../constants/priorityOptions";
 import { useTasks } from "../../hooks/useTasks";
@@ -10,7 +11,6 @@ export const FilterSection = () => {
       <TaskFilter
         name={"filter-status"}
         optionsArray={filterOptions}
-        
       />
 
       <TaskFilter
@@ -22,7 +22,16 @@ export const FilterSection = () => {
   );
 };
 
-const TaskFilter = ({ name, optionsArray, withDefaultOption = false }) => {
+type TaskFilterProps = {
+  name: string
+  optionsArray: {
+    value:string
+    label:string
+  }[]
+  withDefaultOption?: boolean
+}
+
+const TaskFilter = ({ name, optionsArray, withDefaultOption = false } : TaskFilterProps) => {
   const { handleFilterChange } = useTasks();
 
   return (

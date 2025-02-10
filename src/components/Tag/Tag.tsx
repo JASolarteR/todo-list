@@ -1,5 +1,7 @@
+import React from "react";
+
 /* eslint-disable react/prop-types */
-export const Tag = ({ tag }) => {
+export const Tag = ({ tag }:{tag: string}) => {
   const handleTagColor = () => {
     switch (tag) {
       case "high":
