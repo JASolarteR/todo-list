@@ -3,21 +3,17 @@ import { priorityOptions } from "../../constants/priorityOptions";
 import { useForm } from "../../hooks/useForm";
 import "./style.css";
 import React from "react";
+import { Input } from "../Input/Input";
 
 type PriorityOptionsType = {
-  id: string
-  value: string
-  label: string
-}
+  id: string;
+  value: string;
+  label: string;
+};
 
 export const TaskForm = () => {
-  const [toggleForm, setToggleForm] = useState(false);
-
-  const handleToggleForm = () => {
-    setToggleForm((prevState) => !prevState);
-  };
-
-  const { handleForm, handleInput, taskData } = useForm();
+  const { handleForm, handleInput, taskData, toggleForm, handleToggleForm } =
+    useForm();
   const currentDate = new Date().toJSON().slice(0, 10);
 
   if (!toggleForm) {
@@ -31,23 +27,25 @@ export const TaskForm = () => {
   return (
     <>
       <form onSubmit={handleForm} className="task-form">
-        <p onClick={handleToggleForm} style={{cursor: "pointer"}}>&gt; Go back </p>
-        <input
-          type="text"
-          placeholder="Add todo"
+        <p onClick={handleToggleForm} style={{ cursor: "pointer" }}>
+          &gt; Go back{" "}
+        </p>
+        <Input
           onChange={handleInput}
           value={taskData.content}
+          type="text"
+          placeholder="Add task"
           name="content"
           id="task-content"
-          className="input-style"
           required
         />
-        <input
+        <Input
+          onChange={handleInput}
+          value={taskData.content}
           type="date"
+          placeholder="Add task"
           name="date"
           id="task-due-date"
-          className="input-style"
-          onChange={handleInput}
           min={currentDate}
           required
         />
@@ -61,7 +59,7 @@ export const TaskForm = () => {
           <option value="" defaultChecked>
             Task priority
           </option>
-          {priorityOptions.map(({ id, value, label }:PriorityOptionsType) => {
+          {priorityOptions.map(({ id, value, label }: PriorityOptionsType) => {
             return (
               <option key={id} value={value}>
                 {label}

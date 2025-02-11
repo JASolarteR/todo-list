@@ -6,16 +6,24 @@ export const useForm = () => {
   const [taskData, setTaskData] = useState({
     content: "",
     date: "",
-    priority: ""
+    priority: "",
   });
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const inputName = e?.target?.name
-    const inputValue = e?.target?.value
+  const [toggleForm, setToggleForm] = useState(false);
+
+  const handleToggleForm = () => {
+    setToggleForm((prevState) => !prevState);
+  };
+
+  const handleInput = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const inputName = e?.target?.name;
+    const inputValue = e?.target?.value;
     setTaskData({
       ...taskData,
-      [inputName] : inputValue
-    });    
+      [inputName]: inputValue,
+    });
   };
 
   const handleForm = (e: React.FormEvent) => {
@@ -29,5 +37,7 @@ export const useForm = () => {
     taskData,
     handleInput,
     handleForm,
+    toggleForm,
+    handleToggleForm
   };
 };
