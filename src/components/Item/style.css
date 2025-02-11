@@ -5,10 +5,10 @@
   justify-content: space-between;
   width: 80%;
   margin: 0 auto;
-  background-color: white;
+  border: 1px white;
   padding: 1rem;
   border-radius: 1rem;
-  color: black;
+  color: white;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
@@ -21,7 +21,6 @@
 .task-item:active {
   cursor: grabbing;
   transform: rotate(0.5deg);
-
 }
 
 .completed {

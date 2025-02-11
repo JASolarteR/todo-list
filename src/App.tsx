@@ -5,16 +5,26 @@ import { TaskForm } from "./components/Form/Form";
 import { TaskList } from "./components/List/List";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { Stats } from "./components/Stats/Stats";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 function App() {
   return (
     <>
-      <h1>Personal Task Manager</h1>
-      <Stats />
-      <TaskForm />
-      <SearchBar />
-      <FilterSection />
-      <TaskList />
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <h1>Personal Task Manager</h1>
+        <Stats />
+        <TaskForm />
+        <FilterSection />
+        <TaskList />
+      </ThemeProvider>
     </>
   );
 }

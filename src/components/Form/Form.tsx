@@ -4,6 +4,8 @@ import { useForm } from "../../hooks/useForm";
 import "./style.css";
 import React from "react";
 import { Input } from "../Input/Input";
+import { Button } from "@mui/material";
+import { Add } from "@mui/icons-material";
 
 type PriorityOptionsType = {
   id: string;
@@ -18,9 +20,9 @@ export const TaskForm = () => {
 
   if (!toggleForm) {
     return (
-      <button className="toggle-form" onClick={handleToggleForm}>
-        Add new task
-      </button>
+      <Button variant="contained" startIcon={<Add />} onClick={handleToggleForm}>
+        Add task
+      </Button>
     );
   }
 
@@ -41,7 +43,6 @@ export const TaskForm = () => {
         />
         <Input
           onChange={handleInput}
-          value={taskData.content}
           type="date"
           placeholder="Add task"
           name="date"

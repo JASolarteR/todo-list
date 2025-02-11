@@ -6,6 +6,7 @@ import { Tag } from "../Tag/Tag";
 import "./style.css";
 import { TaskProps } from "../../context/TaskContext/TaskContextProvider";
 import { Input } from "../Input/Input";
+import { Button, Checkbox, Chip } from "@mui/material";
 
 export const TaskItem = ({
   id,
@@ -19,23 +20,22 @@ export const TaskItem = ({
   return (
     <li className="task-item">
       <div className="task-input">
-        <Input
-          type="checkbox"
+        <Checkbox
           onChange={(e) => {
             toggleCompleted(id, e.target.checked);
           }}
           checked={completed}
           id={id}
-        /> 
+        />
         <div className={completed ? "completed" : undefined}>
           <h4 style={{ display: "flex", gap: "1rem" }}>{content}</h4>
           <p style={{ fontWeight: "lighter" }}>{date}</p>
         </div>
-        <Tag tag={priority} />
+        <Chip label={priority} variant="outlined" size="small" />
       </div>
-      <button onClick={() => deleteTask(id)} className="delete-btn">
+      <Button variant="contained" color="error" onClick={() => deleteTask(id)}>
         Delete
-      </button>
+      </Button>
     </li>
   );
 };
