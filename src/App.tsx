@@ -7,6 +7,7 @@ import { SearchBar } from "./components/SearchBar/SearchBar";
 import { Stats } from "./components/Stats/Stats";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Typography } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -19,7 +20,9 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <h1>Personal Task Manager</h1>
+        <Typography variant="h1" sx={{ fontSize: "2rem" }}>
+          Personal Task Manager
+        </Typography>
         <Stats />
         <TaskForm />
         <FilterSection />

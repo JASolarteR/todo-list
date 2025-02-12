@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import { useStats } from "../../hooks/useStats";
-import { CircularProgress } from "@mui/material";
 
 export const Stats = () => {
   const { completedTasks, completionRate, pendingTasks } = useStats();

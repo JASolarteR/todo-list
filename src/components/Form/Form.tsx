@@ -5,6 +5,7 @@ import React from "react";
 import {
   Box,
   Button,
+  Fab,
   FormControl,
   InputLabel,
   MenuItem,
@@ -16,7 +17,6 @@ import { Add } from "@mui/icons-material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
-import { useTasks } from "../../hooks/useTasks";
 
 type PriorityOptionsType = {
   id: string;
@@ -47,17 +47,17 @@ export const TaskForm = () => {
     p: 4,
   };
 
+  const fabStyle = {
+    position: 'absolute',
+    bottom: 30,
+    right: 30,
+  };
+
   if (!toggleForm) {
     return (
-      <Button
-        variant="contained"
-        startIcon={<Add />}
-        size="small"
-        style={{ marginBottom: "1rem" }}
-        onClick={handleToggleForm}
-      >
-        Add task
-      </Button>
+      <Fab color="primary" aria-label="add" onClick={handleToggleForm} sx={fabStyle}>
+        <Add />
+      </Fab>
     );
   }
 
@@ -80,13 +80,12 @@ export const TaskForm = () => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 onChange={(newValue) => {
-                  setDateValue(newValue);                  
+                  setDateValue(newValue);
                 }}
                 label={"Task due date"}
                 value={dateValue}
                 defaultValue={dayjs()}
                 minDate={dayjs()}
-              
               />
             </LocalizationProvider>
             <FormControl size="small">

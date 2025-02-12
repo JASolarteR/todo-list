@@ -5,6 +5,7 @@ import { TaskItem } from "../Item/Item";
 import "./style.css";
 import { useEffect, useRef } from "react";
 import React from "react";
+import { Dayjs } from "dayjs";
 
 
 export const TaskList = () => {
@@ -34,7 +35,7 @@ export const TaskList = () => {
   return (
     <ul className="task-list" ref={parentRef}>
       {filteredTasks.length > 0 ? (
-        filteredTasks.map((task: { id: string; content: string; completed: boolean; priority: string; date: string; }) => {
+        filteredTasks.map((task: { id: string; content: string; completed: boolean; priority: string; date: Dayjs | null; }) => {
           const { id, content, completed, priority, date } = task;
           return (
             <TaskItem

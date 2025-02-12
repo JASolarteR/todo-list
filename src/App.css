@@ -5,8 +5,7 @@ body{
     color: whitesmoke;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-x: hidden;
-    margin-top: 1rem;
-    
+    padding: 1rem;
 }
 
 #root{
