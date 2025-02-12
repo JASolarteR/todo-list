@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { TaskContext } from "./TaskContext";
+import { SelectChangeEvent } from "@mui/material";
+import { Dayjs } from "dayjs";
 
 type TaskContextProviderProps = {
   children: React.ReactNode
@@ -10,13 +12,13 @@ export type TaskProps = {
     id: string
     content: string
     completed: boolean
-    date: string
+    date: Dayjs | null
     priority: string
 }
 
 export type AddTaskProps = {
   content:string
-  date: string
+  date: Dayjs | null
   priority: string
 }
 
@@ -30,7 +32,7 @@ export const TaskContextProvider = ({ children }:TaskContextProviderProps) => {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(tasks));
+    localStorage.setItem("todos", JSON.stringify(tasks));    
   }, [tasks]);
 
   const addTask = ({ content, date, priority }:AddTaskProps) => {
@@ -59,11 +61,8 @@ export const TaskContextProvider = ({ children }:TaskContextProviderProps) => {
     setTasks(updatedList);
   };
 
-  const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.name === "filter-status") {
-      setFilter(e.target.value);
-    }
-    setPriorityFilter(e.target.value);
+  const handleFilterChange = (e: SelectChangeEvent, setState: React.Dispatch<React.SetStateAction<string>>) => {
+    setState(e.target.value);
   };
 
   const handleFilteredTasks = () => {
@@ -118,7 +117,10 @@ export const TaskContextProvider = ({ children }:TaskContextProviderProps) => {
         filteredTasks,
         handleQuery,
         query,
-        setTasks
+        setTasks,
+        priorityFilter,
+        setPriorityFilter,
+        setFilter
       }}
     >
       {children}

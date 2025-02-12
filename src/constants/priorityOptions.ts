@@ -7,6 +7,11 @@ type PriorityOptions = {
 export const priorityOptions: PriorityOptions = [
     {
         id: crypto.randomUUID(),
+        value: "all",
+        label: "All priorities"
+    },
+    {
+        id: crypto.randomUUID(),
         value: "low",
         label: "Low"
     },

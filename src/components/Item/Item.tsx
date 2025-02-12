@@ -7,6 +7,7 @@ import "./style.css";
 import { TaskProps } from "../../context/TaskContext/TaskContextProvider";
 import { Input } from "../Input/Input";
 import { Button, Checkbox, Chip } from "@mui/material";
+import dayjs from "dayjs";
 
 export const TaskItem = ({
   id,
@@ -17,6 +18,7 @@ export const TaskItem = ({
 }: TaskProps) => {
   const { toggleCompleted, deleteTask } = useTasks();
 
+  const formattedDay = dayjs(date).format('MMM/DD/YY')
   return (
     <li className="task-item">
       <div className="task-input">
@@ -29,7 +31,7 @@ export const TaskItem = ({
         />
         <div className={completed ? "completed" : undefined}>
           <h4 style={{ display: "flex", gap: "1rem" }}>{content}</h4>
-          <p style={{ fontWeight: "lighter" }}>{date}</p>
+          <p style={{ fontWeight: "lighter" }}>{formattedDay}</p>
         </div>
         <Chip label={priority} variant="outlined" size="small" />
       </div>

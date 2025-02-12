@@ -1,13 +1,16 @@
-import { FormEvent, useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import { useTasks } from "./useTasks.js";
+import { Dayjs } from "dayjs";
+import { SelectChangeEvent } from "@mui/material";
 
 export const useForm = () => {
   const { addTask } = useTasks();
   const [taskData, setTaskData] = useState({
     content: "",
-    date: "",
     priority: "",
   });
+
+  const [dateValue, setDateValue] = useState<Dayjs | null>(null);
 
   const [toggleForm, setToggleForm] = useState(false);
 
@@ -16,7 +19,7 @@ export const useForm = () => {
   };
 
   const handleInput = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>
   ) => {
     const inputName = e?.target?.name;
     const inputValue = e?.target?.value;
@@ -28,7 +31,7 @@ export const useForm = () => {
 
   const handleForm = (e: React.FormEvent) => {
     e?.preventDefault();
-    addTask(taskData);
+    addTask({ ...taskData, date: dateValue });
     const resetForm = e.target as HTMLFormElement;
     resetForm.reset();
   };
@@ -38,6 +41,8 @@ export const useForm = () => {
     handleInput,
     handleForm,
     toggleForm,
-    handleToggleForm
+    handleToggleForm,
+    dateValue,
+    setDateValue,
   };
 };
