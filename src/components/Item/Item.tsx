@@ -1,20 +1,18 @@
 /* eslint-disable react/prop-types */
 
-import React, { useState } from "react";
+import React, { lazy } from "react";
 import { useTasks } from "../../hooks/useTasks";
 import "./style.css";
 import { TaskProps } from "../../context/TaskContext/TaskContextProvider";
-import {
-  Button,
-  Card,
-  Checkbox,
-  Chip,
-  IconButton,
-  Snackbar,
-  Tooltip,
-} from "@mui/material";
 import { Delete, DragIndicator } from "@mui/icons-material";
 import { useTaskItem } from "../../hooks/useTaskItem";
+
+const Card = lazy(() => import("@mui/material/Card"))
+const Checkbox = lazy(() => import("@mui/material/Checkbox"))
+const Chip = lazy(() => import("@mui/material/Chip"))
+const IconButton = lazy(() => import("@mui/material/IconButton"))
+const Tooltip = lazy(() => import("@mui/material/Tooltip"))
+
 
 export const TaskItem = ({
   id,

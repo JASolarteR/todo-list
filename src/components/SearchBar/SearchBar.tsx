@@ -1,7 +1,6 @@
 import React from "react";
 import { useTasks } from "../../hooks/useTasks";
-import { Input } from "../Input/Input";
-import { TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 export const SearchBar = () => {
   const { query, handleQuery } = useTasks();

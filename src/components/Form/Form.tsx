@@ -1,20 +1,14 @@
 import { priorityOptions } from "../../constants/priorityOptions";
 import { useForm } from "../../hooks/useForm";
 import "./style.css";
-import React from "react";
-import {
-  Box,
-  Button,
-  Fab,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Modal,
-  Select,
-  TextField,
-} from "@mui/material";
-import { Add } from "@mui/icons-material";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import React, { lazy } from "react";
+
+//Material UI
+import Box from "@mui/material/Box";
+import Add from "@mui/icons-material/Add";
+
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 
@@ -23,6 +17,15 @@ type PriorityOptionsType = {
   value: string;
   label: string;
 };
+
+const Button = lazy(() => import("@mui/material/Button"))
+const Fab = lazy(() => import("@mui/material/Fab"))
+const FormControl = lazy(() => import("@mui/material/FormControl"))
+const InputLabel = lazy(() => import("@mui/material/InputLabel"))
+const MenuItem = lazy(() => import("@mui/material/MenuItem"))
+const Modal = lazy(() => import("@mui/material/Modal"))
+const Select = lazy(() => import("@mui/material/Select"));
+const TextField = lazy(() => import("@mui/material/TextField"));
 
 export const TaskForm = () => {
   const {
@@ -33,6 +36,7 @@ export const TaskForm = () => {
     toggleForm,
     handleToggleForm,
     setDateValue,
+    handleSelect
   } = useForm();
 
   const style = {
@@ -48,14 +52,19 @@ export const TaskForm = () => {
   };
 
   const fabStyle = {
-    position: 'absolute',
+    position: "absolute",
     bottom: 30,
     right: 30,
   };
 
   if (!toggleForm) {
     return (
-      <Fab color="primary" aria-label="add" onClick={handleToggleForm} sx={fabStyle}>
+      <Fab
+        color="primary"
+        aria-label="add"
+        onClick={handleToggleForm}
+        sx={fabStyle}
+      >
         <Add />
       </Fab>
     );
@@ -94,7 +103,7 @@ export const TaskForm = () => {
                 name="priority"
                 id="task-priority"
                 className="input-style"
-                onChange={handleInput}
+                onChange={handleSelect}
                 required
                 value={taskData.priority}
               >

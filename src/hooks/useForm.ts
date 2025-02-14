@@ -1,4 +1,4 @@
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useTasks } from "./useTasks.js";
 import dayjs, { Dayjs } from "dayjs";
 import { SelectChangeEvent } from "@mui/material";
@@ -32,6 +32,15 @@ export const useForm = () => {
     });
   };
 
+  const handleSelect = (e: SelectChangeEvent<unknown>) => {
+    const inputName = e?.target?.name;
+    const inputValue = e?.target?.value;
+    setTaskData({
+      ...taskData,
+      [inputName]: inputValue,
+    });
+  }
+
   const handleForm = (e: React.FormEvent) => {
     e?.preventDefault();
     addTask({ ...taskData, date: dateValue });
@@ -52,5 +61,6 @@ export const useForm = () => {
     handleToggleForm,
     dateValue,
     setDateValue,
+    handleSelect
   };
 };
