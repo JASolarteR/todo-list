@@ -19,7 +19,6 @@ export const useForm = () => {
     setToggleForm((prevState) => !prevState);
   };
 
-  
 
   const handleInput = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>

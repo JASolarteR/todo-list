@@ -6,26 +6,26 @@ import React, { lazy } from "react";
 //Material UI
 import Box from "@mui/material/Box";
 import Add from "@mui/icons-material/Add";
+import Fab from "@mui/material/Fab";
+import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
 
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
 
+
 type PriorityOptionsType = {
   id: string;
   value: string;
   label: string;
 };
-
-const Button = lazy(() => import("@mui/material/Button"))
-const Fab = lazy(() => import("@mui/material/Fab"))
-const FormControl = lazy(() => import("@mui/material/FormControl"))
-const InputLabel = lazy(() => import("@mui/material/InputLabel"))
-const MenuItem = lazy(() => import("@mui/material/MenuItem"))
-const Modal = lazy(() => import("@mui/material/Modal"))
-const Select = lazy(() => import("@mui/material/Select"));
-const TextField = lazy(() => import("@mui/material/TextField"));
 
 export const TaskForm = () => {
   const {
@@ -64,6 +64,7 @@ export const TaskForm = () => {
         aria-label="add"
         onClick={handleToggleForm}
         sx={fabStyle}
+        role="add-task"
       >
         <Add />
       </Fab>
@@ -72,7 +73,7 @@ export const TaskForm = () => {
 
   return (
     <>
-      <Modal open={toggleForm} onClose={handleToggleForm} className="task-form">
+      <Modal open={toggleForm} onClose={handleToggleForm} className="task-form" role="form-modal">
         <Box sx={style}>
           <form onSubmit={handleForm} className="task-form">
             <h3>Add a new task</h3>
@@ -127,3 +128,5 @@ export const TaskForm = () => {
     </>
   );
 };
+
+
