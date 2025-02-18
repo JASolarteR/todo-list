@@ -82,7 +82,7 @@ export const TaskForm = () => {
               label="Task content"
               variant="outlined"
               name="content"
-              value={taskData.content}
+              placeholder="Walk my dog..."
               onChange={handleInput}
               size="small"
               required
@@ -107,6 +107,7 @@ export const TaskForm = () => {
                 onChange={handleSelect}
                 required
                 value={taskData.priority}
+                placeholder="Task Priority"
               >
                 {priorityOptions
                   .slice(1)

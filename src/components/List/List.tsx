@@ -33,7 +33,7 @@ export const TaskList = () => {
   }, [filteredTasks]);
 
   return (
-    <ul className="task-list" ref={parentRef}>
+    <ul className="task-list" ref={parentRef} title="tasks-list">
       {filteredTasks.length > 0 ? (
         filteredTasks.map((task: { id: string; content: string; completed: boolean; priority: string; date: Dayjs | null; }) => {
           const { id, content, completed, priority, date } = task;
@@ -49,7 +49,7 @@ export const TaskList = () => {
           );
         })
       ) : (
-        <p>{emptyStateMessage()}</p>
+        <p role="empty-state-message">{emptyStateMessage()}</p>
       )}
     </ul>
   );

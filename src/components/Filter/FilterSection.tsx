@@ -29,6 +29,7 @@ export const FilterSection = () => {
           }}
           value={filter}
           labelId="filter-status"
+          placeholder="Filter tasks by status"
         >
           {filterOptions.map(({ value, label }) => {
             return (
@@ -51,6 +52,7 @@ export const FilterSection = () => {
           size="small"
           value={priorityFilter}
           labelId="filter-priority"
+          placeholder="Filter tasks by priority"
         >
           {priorityOptions.map(({ value, label }) => {
             return (

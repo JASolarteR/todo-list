@@ -6,20 +6,21 @@ export const Stats = () => {
   const { completedTasks, completionRate, pendingTasks } = useStats();
 
   return (
-    <section className="stats-section">
+    <section className="stats-section" role="stats-section">
       <div className="stats-list">
-        <p>Completed tasks: {completedTasks}</p>
+        <p>Completed tasks: <span role="completed-tasks-count">{completedTasks}</span></p>
         <label htmlFor="tasks-progress" className="tasks-progress">
           Tasks progression
           <progress
             max={100}
             id="tasks-progress"
             value={completionRate.toPrecision(3)}
+            role="tasks-completion-progress-bar"
           >
             {completionRate.toPrecision(3)}%
           </progress>
         </label>
-        <p>Pending tasks: {pendingTasks}</p>
+        <p >Pending tasks: <span role="pending-tasks-count">{pendingTasks}</span></p>
       </div>
     </section>
   );
