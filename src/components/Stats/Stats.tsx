@@ -15,7 +15,6 @@ export const Stats = () => {
             max={100}
             id="tasks-progress"
             value={completionRate.toPrecision(3)}
-            role="tasks-completion-progress-bar"
           >
             {completionRate.toPrecision(3)}%
           </progress>

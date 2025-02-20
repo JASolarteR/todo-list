@@ -38,7 +38,7 @@ describe("Task Form Test", () => {
     expect(formElement).toBeInTheDocument();
   });
 
-  it("Task form submit", () => {
+  it("should submit task form", () => {
     render(
       <TaskContextProvider>
         <TaskForm />
